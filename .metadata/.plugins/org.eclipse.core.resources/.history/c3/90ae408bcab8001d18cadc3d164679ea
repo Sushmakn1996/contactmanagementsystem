@@ -1,0 +1,18 @@
+package com.te.contactsystem.service;
+
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CustomUserDetailsService implements UserDetailsService {
+
+	@Autowired
+	private UserRepository repository;
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		Optional<User> findByFirstName = repository.findByFirstName(username);
+		User user = findByFirstName.get();
+		return new MyUserDetails(user);
+	}
+}

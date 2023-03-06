@@ -1,0 +1,15 @@
+package com.te.contactsystem.entity;
+
+public enum Role {
+	ADMIN,
+	DEVELOPER,
+	TESTER,
+	USER;
+	
+	public String Role;
+	public Role setRole(String role) {
+		this.role = role;
+	    return this;
+	}
+
+}

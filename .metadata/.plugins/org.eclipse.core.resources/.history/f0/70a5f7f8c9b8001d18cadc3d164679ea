@@ -1,0 +1,14 @@
+package com.te.contactsystem.service;
+
+public interface UserService {
+	UserDto addContactDetails(UserDto userDto);
+
+	User searchUserContactDetailsByFirstName(String firstName);
+
+	UserDto updateUserContactDetails(UserDto userDto);
+	
+	Boolean deleteUserContactDetails(Long userId);
+	
+	List<UserDto> getAllUserContactDetails();
+
+}

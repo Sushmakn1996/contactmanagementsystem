@@ -1,0 +1,5 @@
+package com.te.contactsystem.entity;
+
+public class User {
+
+}

@@ -1,0 +1,9 @@
+
+w
+java:S5344 ">Don't use the default "PasswordEncoder" relying on plain-text.(Ö˜ÔÚ8šª·‰ê0H•RCRITICALZVULNERABILITY
+w
+java:S1874"DRemove this use of "WebSecurityConfigurerAdapter"; it is deprecated.(Ë¶Ï“8‹×Ù­ë0HœRMINORZ
+CODE_SMELL
+n
+java:S1874%";Remove this use of "NoOpPasswordEncoder"; it is deprecated.(å‰ö8‹×Ù­ë0HRMINORZ
+CODE_SMELL

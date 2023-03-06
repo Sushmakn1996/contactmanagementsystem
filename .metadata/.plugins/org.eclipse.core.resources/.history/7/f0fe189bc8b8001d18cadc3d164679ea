@@ -1,0 +1,5 @@
+package com.te.contactsystem.service;
+
+public class CustomUserDetailsService {
+
+}

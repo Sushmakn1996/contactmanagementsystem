@@ -1,0 +1,68 @@
+package com.te.contactsystem.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl implements UserService {
+	
+	@Autowired
+	private UserRepository repository;
+
+	@Override
+	public UserDto addContactDetails(UserDto userDto) {
+		User user = new User();
+		BeanUtils.copyProperties(userDto, user);
+		User save = repository.save(user);
+		BeanUtils.copyProperties(save, userDto);
+		return userDto;
+	}
+
+	@Override
+	public User searchUserContactDetailsByFirstName(String firstName) {
+
+		Optional<User> findByFirstName = repository.findByFirstName(firstName);
+		if(!findByFirstName.isEmpty()) {
+			User user = findByFirstName.get();
+			return user;
+		}
+		return null;
+	
+
+	}
+
+	@Override
+	public UserDto updateUserContactDetails(UserDto userDto) {
+		User user = repository.findById(userDto.getUserId()).orElseThrow(
+				() -> new UserIdNotExistException("User is not present with this Id: " + userDto.getUserId()));
+		BeanUtils.copyProperties(userDto, user);
+		User save = repository.save(user);
+		BeanUtils.copyProperties(save, userDto);
+		return userDto;
+
+	}
+
+	@Override
+	public Boolean deleteUserContactDetails(Long userId) {
+		boolean isDeleted = false;
+		User user = repository.findById(userId)
+				.orElseThrow(() -> new UserIdNotExistException("User is not present with this Id: " + userId));
+		repository.deleteById(userId);
+		isDeleted = true;
+		return isDeleted;
+
+	}
+
+	@Override
+	public List<UserDto> getAllUserContactDetails() {
+		List<User> findAll = repository.findAll();
+		List<UserDto> list = new ArrayList<>();
+		findAll.forEach(i -> {
+			UserDto userDto = new UserDto();
+			BeanUtils.copyProperties(i, userDto);
+			list.add(userDto);
+		});
+		return list;
+
+	}
+
+}

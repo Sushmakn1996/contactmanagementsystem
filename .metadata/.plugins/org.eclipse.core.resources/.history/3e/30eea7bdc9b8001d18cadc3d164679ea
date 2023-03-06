@@ -1,0 +1,5 @@
+package com.te.contactsystem.dto;
+
+public class UserDto {
+
+}

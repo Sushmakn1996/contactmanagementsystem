@@ -1,0 +1,15 @@
+package com.te.contactsystem.entity;
+
+import lombok.Getter;
+
+@Getter
+public enum Role {
+	ADMIN,
+	DEVELOPER,
+	TESTER,
+	USER;
+	
+	private String Role;
+	
+
+}
